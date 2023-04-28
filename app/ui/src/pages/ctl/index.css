@@ -4,6 +4,7 @@ label {
 
 button {
     background-color: var(--surface);
+    color: white;
 }
 
 #ctlFileHidden {
