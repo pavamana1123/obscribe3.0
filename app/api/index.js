@@ -7,6 +7,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const port = 8000
 
 app.post('/', (req, res)=>{
+    console.log(req.body)
+    // console.log(`Obscriber> ${req.body.path}`)
     fs.readdir(req.body.path, { withFileTypes: true }, (err, files) => {
     if(err){
         sendError(res, 500, err)
@@ -29,7 +31,7 @@ app.post('/', (req, res)=>{
 })
 
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`)
+  console.log(`Running Obscriber> App listening at http://localhost:${port}`)
 })
 
 function sendError(res, code, msg){
