@@ -1,0 +1,11 @@
+label {
+    color: white;
+}
+
+button {
+    background-color: var(--surface);
+}
+
+#ctlFileHidden {
+    display: none;
+}

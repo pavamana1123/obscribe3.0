@@ -1,0 +1,9 @@
+body {
+    background-color: #222;
+    color: white;
+}
+
+:root {
+    --surface: #3c404b;
+    --bg: #2b2e38;
+  }
