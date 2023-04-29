@@ -11,6 +11,7 @@ function Ctl(props) {
 
   var [selectedTemplate, setSelectedTemplate] = useState(-1)
   var [collapseData, setCollapseData] = useState([])
+  var [show, setShow] = useState(true)
 
   useEffect(()=>{
     document.getElementById('filepath').value = cookie.get('path')
@@ -111,19 +112,22 @@ ${line.replaceAll("~","")}`
   return (
     <div className='ctl'>
       <div className='ctlFileHolder'>
-        <label>File</label>
+        <label className='filelabel'>File</label>
         <input id="filepath"/>
         <button onClick={importCaptions}>Import</button>
       </div>
 
       {templateData.length?<div className='templateDataHolder'>
-        <select onChange={changeTemplate}>
-          {
-            [{template: "Select Template"}].concat(templateData).map(t=> {
-              return <option>{t.template}</option>
-            })
-          }
-        </select>
+        <div className='tempSel'>
+          <select onChange={changeTemplate}>
+            {
+              [{template: "Select Template"}].concat(templateData).map(t=> {
+                return <option>{t.template}</option>
+              })
+            }
+          </select>
+          <button>{show?"Show":"Hide"}</button>
+        </div>
         {selectedTemplate!=-1?
           <div>
             {captionsList[selectedTemplate].map((cp, i)=>{

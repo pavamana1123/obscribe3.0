@@ -1,17 +1,63 @@
 label {
     color: white;
+    font-size: 14px;
+    font: 200;
 }
 
 button {
     background-color: var(--surface);
     color: white;
+    padding: 4px;
+    border-radius: 4px;
+    font-weight: 100;
+    cursor: pointer;
 }
 
-#ctlFileHidden {
-    display: none;
+button:hover {
+    background-color: var(--buttonHover)
+}
+
+#filepath {
+    background-color: var(--surface);
+    color: white;
+    border: none;
+    padding: 4px;
+    border-radius: 4px;
+    font-weight: 100;
+    width: 150px;
+    margin: 0px 10px 0px 10px;
+}
+
+#filepath:focus {
+    outline: none;
 }
 
 .ctl {
+    display: flex;
     background-color: var(--bg);
     height: 100vh;
+    padding: 7px;
+    flex-direction: column;
+}
+
+.ctlFileHolder {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+select {
+    background-color: var(--surface);
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 13px;
+    outline: none;
+    border: none;
+    width: 190px;
+    margin-right: 9px;
+}
+
+.tempSel {
+    margin-bottom: 4px;
 }
