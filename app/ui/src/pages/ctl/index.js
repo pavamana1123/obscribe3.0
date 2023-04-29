@@ -12,6 +12,12 @@ function Ctl(props) {
   var [selectedTemplate, setSelectedTemplate] = useState(-1)
   var [collapseData, setCollapseData] = useState([])
   var [show, setShow] = useState(true)
+  var [sel, setSel] = useState([0,0])
+
+  var tc = useRef(new BroadcastChannel('obscribe-template'))
+  var cc = useRef(new BroadcastChannel('obscribe-caption'))
+  var sc = useRef(new BroadcastChannel('obscribe-show'))
+
 
   useEffect(()=>{
     document.getElementById('filepath').value = cookie.get('path')
@@ -84,8 +90,7 @@ ${line.replaceAll("~","")}`
     setCollapseData(captionsList[s].map(()=>{
       return false
     }))
-    let channel = new BroadcastChannel('obscribe-template');
-    channel.postMessage(templateData[s])
+    tc.current.postMessage(templateData[s])
   }
 
   const toggleCollapse = (e)=>{
@@ -100,11 +105,16 @@ ${line.replaceAll("~","")}`
   }
 
   const sendCaption = (i, j)=>{
-    let channel = new BroadcastChannel('obscribe-caption');
-    channel.postMessage({
+    cc.current.postMessage({
       id: manifestData[selectedTemplate].id,
       caption: captionsList[selectedTemplate][i].value[j]
     })
+    setSel([i,j])
+  }
+
+  const toggleShow = ()=>{
+    sc.current.postMessage(!show)
+    setShow(!show)
   }
 
   var self = this
@@ -126,19 +136,20 @@ ${line.replaceAll("~","")}`
               })
             }
           </select>
-          <button>{show?"Show":"Hide"}</button>
+          <button onClick={toggleShow}>{!show?"Show":"Hide"}</button>
         </div>
         {selectedTemplate!=-1?
           <div>
             {captionsList[selectedTemplate].map((cp, i)=>{
               return <div>
-                <div onClick={toggleCollapse}>{cp.name}</div>
-                {collapseData[i]?<div>
+                <div className='name' onClick={toggleCollapse}>{cp.name}</div>
+                {collapseData[i]?<div className='captHolder'>
                   {
                     cp.value.map((vl, j)=>{
-                      return <button onClick={sendCaption.bind(self, i, j)}>
+                      return <div onClick={sendCaption.bind(self, i, j)}
+                        className={`capt ${sel[0]==i && sel[1]==j?"sel":""}`}>
                         {vl[manifestData[selectedTemplate].id.indexOf(manifestData[selectedTemplate].key)]}
-                      </button>
+                      </div>
                     })
                   }
                 </div>:null}

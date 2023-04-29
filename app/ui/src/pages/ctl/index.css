@@ -59,5 +59,46 @@ select {
 }
 
 .tempSel {
-    margin-bottom: 4px;
+    margin-bottom: 15px;
+}
+
+.name {
+    width: 250px;
+    background-color: var(--surface);
+    color: white;
+    font-size: 15px;
+    padding: 3px 0px 3px 5px;
+    border-radius: 3px;
+    margin-top: 5px;
+    cursor: pointer;
+    background-color: var(--surface);
+    color: white;
+    font-weight: 100;
+}
+
+.captHolder {
+    padding: 4px;
+}
+
+.capt {
+    cursor: pointer;
+    padding: 4px 0px 4px 8px;
+    width: 240px;
+    white-space: pre-wrap;
+    border-radius: 4px;
+    background-color: var(--surface);
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.capt:hover {
+    background-color: var(--sel);
+}
+
+.sel {
+    background-color: var(--sel);
+}
+
+button, div {
+    user-select: none;
 }

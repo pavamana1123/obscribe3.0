@@ -6,6 +6,8 @@ function Overlay(props) {
   var self = this
   const { ctl } = props
 
+  var [show, setShow] = useState(true)
+
   useEffect(()=>{
     if(!document.getElementById('css')){
       const style = document.createElement('style');
@@ -27,10 +29,16 @@ function Overlay(props) {
         document.getElementById(i).innerHTML=caption[j]
       })
     }
+
+    const bs = new BroadcastChannel("obscribe-show")
+    bs.onmessage = ev => {
+      setShow(ev.data)
+    }
+
   },[])
 
   return (
-    <div id='html'/>
+    <div id='html' className={`${show?"":"ohide"}`}/>
   )
 
 }
