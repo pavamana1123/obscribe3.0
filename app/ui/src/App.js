@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useEffect, useState } from 'react';
+import {Route, BrowserRouter as Router, Routes} from "react-router-dom"
 import Overlay from './pages/overlay';
 import Ctl from './pages/ctl';
 
@@ -8,7 +8,12 @@ function App() {
 
   return (
     <div className="App">
-      {window.location.search=="?p=ctl"?<Ctl/>:<Overlay/>}
+       <Router>
+        <Routes>
+          <Route path="/ctl" element={<Ctl/>}></Route>
+          <Route path="/overlay" element={<Overlay/>}></Route>
+        </Routes>
+    </Router>
     </div>
   );
 }
