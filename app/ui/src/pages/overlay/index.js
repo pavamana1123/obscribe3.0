@@ -5,24 +5,29 @@ function Overlay(props) {
 
   var self = this
   const { ctl } = props
-  var [content, setContent] = useState("ok")
 
   useEffect(()=>{
-    const bc = new BroadcastChannel("obscribe")
+    if(!document.getElementById('css')){
+      const style = document.createElement('style');
+      style.innerHTML = '';
+      style.id = 'css';
+      document.head.appendChild(style);
+    }
+
+    const bt = new BroadcastChannel("obscribe-template")
+    bt.onmessage = ev => {
+      document.getElementById("html").innerHTML = ev.data.html
+      document.getElementById("css").innerHTML = ev.data.css
+    }
+
+    const bc = new BroadcastChannel("obscribe-caption")
     bc.onmessage = ev => {
-      console.log(ev.data)
-      setContent(ev.data)
+      
     }
   },[])
 
   return (
-    <div>
-      {!!content?<div className='overlayRoot' dangerouslySetInnerHTML={{
-        __html: content
-        }}/>:null}   
-    </div>
-
-
+    <div id='html'/>
   )
 
 }
