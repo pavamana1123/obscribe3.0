@@ -10,3 +10,8 @@ button {
 #ctlFileHidden {
     display: none;
 }
+
+.ctl {
+    background-color: var(--bg);
+    height: 100vh;
+}
