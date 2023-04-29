@@ -3,16 +3,15 @@ class API {
         this.body = body
     }
    
-    async call(){
+    async call(path){
         var self = this
-        console.log(self.body)
-        const res = await fetch('http://127.0.0.1:8000/', {
+        const res = await fetch('/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                path,
             },
             body: JSON.stringify(self.body||{}),
-            mode: 'no-cors' 
         })
 
         return res.json().then((r)=>{

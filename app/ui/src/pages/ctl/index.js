@@ -3,11 +3,7 @@ import './index.css';
 import API from "../../api"
 
 const importCaptions = ()=>{
-  new API(
-    {
-      path: "C:/PVPD/a"
-    }
-  ).call().then((res)=>{
+  new API().call("C:/PVPD/a").then((res)=>{
     console.log(res)
   }).catch(err=>{
     console.log(err)
