@@ -22,7 +22,10 @@ function Overlay(props) {
 
     const bc = new BroadcastChannel("obscribe-caption")
     bc.onmessage = ev => {
-      
+      let { id, caption } = ev.data
+      id.forEach((i, j)=>{
+        document.getElementById(i).innerHTML=caption[j]
+      })
     }
   },[])
 

@@ -4,3 +4,7 @@
     bottom: 0;
     flex-direction: column;
 }
+
+body {
+    background-color: transparent;
+}

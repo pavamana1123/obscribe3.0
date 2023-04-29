@@ -98,6 +98,16 @@ ${line.replaceAll("~","")}`
     setCollapseData(cd)
   }
 
+  const sendCaption = (i, j)=>{
+    let channel = new BroadcastChannel('obscribe-caption');
+    channel.postMessage({
+      id: manifestData[selectedTemplate].id,
+      caption: captionsList[selectedTemplate][i].value[j]
+    })
+  }
+
+  var self = this
+
   return (
     <div className='ctl'>
       <div className='ctlFileHolder'>
@@ -121,8 +131,8 @@ ${line.replaceAll("~","")}`
                 <div onClick={toggleCollapse}>{cp.name}</div>
                 {collapseData[i]?<div>
                   {
-                    cp.value.map(vl=>{
-                      return <button>
+                    cp.value.map((vl, j)=>{
+                      return <button onClick={sendCaption.bind(self, i, j)}>
                         {vl[manifestData[selectedTemplate].id.indexOf(manifestData[selectedTemplate].key)]}
                       </button>
                     })
