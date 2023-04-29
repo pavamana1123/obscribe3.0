@@ -1,6 +1,8 @@
 const express = require('express')
+const path = require('path');
 const fs = require('fs')
 const app = express()
+app.use(express.static(path.join(__dirname, 'build')))
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -31,6 +33,10 @@ app.post('/', (req, res)=>{
 
     })
 })
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.listen(port, () => {
   console.log(`Running Obscriber> App listening at http://localhost:${port}`)

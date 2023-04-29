@@ -35,9 +35,9 @@ button:hover {
 .ctl {
     display: flex;
     background-color: var(--bg);
-    height: 100vh;
     padding: 7px;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 .ctlFileHolder {
@@ -102,3 +102,11 @@ select {
 button, div {
     user-select: none;
 }
+
+@media screen and (min-width: 1200px) {
+    /* CSS styles to apply when viewport width is greater than 1200px */
+    .ctl {
+        flex-direction: row;
+    }
+}
+  
