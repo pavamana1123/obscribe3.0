@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './index.css';
+import { HTMLParser } from "node-html-parser";
 
 function Overlay(props) {
 
@@ -18,7 +19,8 @@ function Overlay(props) {
 
     const bt = new BroadcastChannel("obscribe-template")
     bt.onmessage = ev => {
-      document.getElementById("html").innerHTML = ev.data.html
+
+      document.getElementById("html").innerHTML = HTMLParser.parse(ev.data.html).getElementsByTagName("body")[0].innerHTML.trim()
       document.getElementById("css").innerHTML = ev.data.css
     }
 
