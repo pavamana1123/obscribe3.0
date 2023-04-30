@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './index.css';
-import { HTMLParser } from "node-html-parser";
+import HTMLParser from "node-html-parser";
 
 function Overlay(props) {
 
