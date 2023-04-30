@@ -2,12 +2,11 @@ const express = require('express')
 const path = require('path');
 const fs = require('fs')
 const app = express()
-app.use(express.static(path.join(__dirname, 'build')))
 const bodyParser = require('body-parser')
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
 const port = 3005
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.post('/', (req, res)=>{
     var path = req.get('path')
     console.log(`Obscriber> ${path}`)
@@ -34,6 +33,7 @@ app.post('/', (req, res)=>{
     })
 })
 
+app.use(express.static(process.cwd()))
 app.get('*', (req, res) => {
     res.sendFile(path.join(process.cwd(), 'index.html'))
 });
