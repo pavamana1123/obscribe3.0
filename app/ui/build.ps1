@@ -1,3 +1,3 @@
 npm run build
-rm -Force -Recurse -ErrorAction SilentlyContinue  ..\..\release\build\
-mv .\build\ ..\..\release\
+Get-ChildItem ..\..\release\ | Where-Object { $_.Name -ne "obscriber.exe" } | Remove-Item -Recurse -Force
+Move-Item .\build\* ..\..\release\
