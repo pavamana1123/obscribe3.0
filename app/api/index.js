@@ -39,7 +39,13 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Running Obscriber> App listening at http://localhost:${port}`)
+  console.log(`
+Hare Krishna!
+Obscriber is running
+
+Dock Url: http://localhost:3005/ctl
+Browser Overlay Url: http://localhost:3005/overlay
+`.trim())
 })
 
 function sendError(res, code, msg){
