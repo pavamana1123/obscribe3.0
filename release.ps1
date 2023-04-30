@@ -1,0 +1,1 @@
+Compress-Archive -Force -Path .\release -DestinationPath .\release.zip
