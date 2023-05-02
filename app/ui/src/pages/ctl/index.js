@@ -45,11 +45,14 @@ function Ctl(props) {
       }))
 
       setCaptionsList(res.body.map(r=>{
-        var { manifest, captions } = r
+        let { manifest, captions } = r
 
-        var m = JSON.parse(manifest)
-        var c = []
-        var keyCount = 0
+        let m = JSON.parse(manifest)
+        let c = []
+        console.log(c)
+        let keyCount = 0
+
+
         captions.split("\n").forEach(line => {
           line = line.trim()
           if(line.startsWith("#")){
@@ -60,7 +63,7 @@ function Ctl(props) {
             return
           }
           if(!!line){
-            if(keyCount%m.id.length==0){
+            if(keyCount%m.id.length==0 && !line.startsWith("~")){
               c[c.length-1].value.push([])
             }
             if(line.startsWith("~")){
@@ -72,7 +75,6 @@ ${line.replaceAll("~","")}`
             }
           }
         })
-
         return c
       }))
 

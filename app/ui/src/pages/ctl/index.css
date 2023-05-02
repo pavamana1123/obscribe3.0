@@ -102,11 +102,3 @@ select {
 button, div {
     user-select: none;
 }
-
-@media screen and (min-width: 1200px) {
-    /* CSS styles to apply when viewport width is greater than 1200px */
-    .ctl {
-        flex-direction: row;
-    }
-}
-  
