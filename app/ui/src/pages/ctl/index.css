@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 label {
     color: white;
     font-size: 14px;
@@ -17,6 +21,12 @@ button:hover {
     background-color: var(--buttonHover)
 }
 
+.filename {
+    font-family: monospace;
+    color: grey;
+    margin: 5px 0 5px 0;
+}
+
 #filepath {
     background-color: var(--surface);
     color: white;
@@ -24,7 +34,7 @@ button:hover {
     padding: 4px;
     border-radius: 4px;
     font-weight: 100;
-    width: 150px;
+    width: 100vw;
     margin: 0px 10px 0px 10px;
 }
 
@@ -62,8 +72,22 @@ select {
     margin-bottom: 15px;
 }
 
+.ts {
+    width: 60vw;
+}
+
+.num-name {
+    display: flex;
+}
+
+.name-collapse {
+    margin-right: 2vw;
+}
+
 .name {
-    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
     background-color: var(--surface);
     color: white;
     font-size: 15px;
@@ -77,13 +101,13 @@ select {
 }
 
 .captHolder {
-    padding: 4px;
+    padding: 2vw 0vw 2vw 5vw;
 }
 
 .capt {
     cursor: pointer;
     padding: 4px 0px 4px 8px;
-    width: 240px;
+    width: 84vw;
     white-space: pre-wrap;
     border-radius: 4px;
     background-color: var(--surface);

@@ -39,7 +39,7 @@ function Overlay(props) {
   },[])
 
   return (
-    <div id='html' className={`${show?"":"ohide"}`}/>
+    <div id='html' className={`overlay ${show?"":"ohide"}`}/>
   )
 
 }

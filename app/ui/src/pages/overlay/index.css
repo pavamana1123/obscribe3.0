@@ -9,6 +9,11 @@ body {
     background-color: transparent;
 }
 
+.overlay {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
 .ohide {
-    visibility: hidden;
+    opacity: 0;
 }

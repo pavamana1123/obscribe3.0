@@ -49,7 +49,6 @@ function Ctl(props) {
 
         let m = JSON.parse(manifest)
         let c = []
-        console.log(c)
         let keyCount = 0
 
 
@@ -95,10 +94,10 @@ ${line.replaceAll("~","")}`
     tc.current.postMessage(templateData[s])
   }
 
-  const toggleCollapse = (e)=>{
+  const toggleCollapse = (name)=>{
     var i = captionsList[selectedTemplate].map(c=>{
       return c.name
-    }).indexOf(e.target.textContent.trim())
+    }).indexOf(name)
     var cd = collapseData.map(c=>{
       return c
     })
@@ -129,9 +128,13 @@ ${line.replaceAll("~","")}`
         <button onClick={importCaptions}>Import</button>
       </div>
 
+      <div className='filename'>
+        {`File: ${document.getElementById("filepath") && document.getElementById("filepath").value}`}
+      </div>
+
       {templateData.length?<div className='templateDataHolder'>
         <div className='tempSel'>
-          <select onChange={changeTemplate}>
+          <select className='ts' onChange={changeTemplate}>
             {
               [{template: "Select Template"}].concat(templateData).map(t=> {
                 return <option>{t.template}</option>
@@ -144,7 +147,12 @@ ${line.replaceAll("~","")}`
           <div>
             {captionsList[selectedTemplate].map((cp, i)=>{
               return <div>
-                <div className='name' onClick={toggleCollapse}>{cp.name}</div>
+                <div className='name' onClick={()=>{
+                  toggleCollapse(cp.name)
+                }}>
+                  <div className='num-name'>{`(${(i+1).toString().padStart(2, 0)}) ${cp.name}`}</div>
+                  <div className='name-collapse'>{collapseData[i]?"-":"+"}</div>
+                </div>
                 {collapseData[i]?<div className='captHolder'>
                   {
                     cp.value.map((vl, j)=>{
