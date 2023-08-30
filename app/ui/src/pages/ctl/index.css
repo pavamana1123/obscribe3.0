@@ -17,6 +17,11 @@ button {
     cursor: pointer;
 }
 
+.name:hover {
+    background-color: #eee;
+    color: black;
+}
+
 button:hover {
     background-color: var(--buttonHover)
 }

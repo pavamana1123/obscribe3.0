@@ -69,7 +69,7 @@ function Ctl(props) {
               c[c.length-1].value[c[c.length-1].value.length-1][c[c.length-1].value[c[c.length-1].value.length-1].length-1]+=`
 ${line.replaceAll("~","")}`
             }else{
-              c[c.length-1].value[c[c.length-1].value.length-1].push(line)
+              c[c.length-1].value[c[c.length-1].value.length-1].push(line=="null"?"":line)
               keyCount++
             }
           }
@@ -78,7 +78,6 @@ ${line.replaceAll("~","")}`
       }))
 
     }).catch(err=>{
-      console.log(err)
       alert(err)
     })
   }
